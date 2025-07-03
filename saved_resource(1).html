@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<!-- saved from url=(0140)https://bfc3kz7veyt34ns4.canva-hosted-embed.com/codelet/AAEAEGJmYzNrejd2ZXl0MzRuczQAAAAAAZfWCwW_kVvgKPVLliDroxaxV5RsNCsV5AP6TYI0gfezSyGMZnc/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Civilizations Timeline</title>
+    <script src="./saved_resource"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #f8f3e9;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8b5d33, #c19a6b);
+            border-radius: 3px;
+            z-index: 1;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #8b5d33;
+            top: 43px;
+            transform: translateX(-50%);
+            z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid #f8f3e9;
+        }
+        
+        .timeline-marker:hover {
+            transform: translateX(-50%) scale(1.2);
+            background-color: #c19a6b;
+        }
+        
+        .timeline-marker.active {
+            background-color: #5b3a1a;
+            transform: translateX(-50%) scale(1.3);
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 70px;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: #5b3a1a;
+            text-align: center;
+            width: 100px;
+        }
+        
+        .timeline-card {
+            position: absolute;
+            width: 320px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 15px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            transform: translateY(20px);
+            z-index: 10;
+            border-left: 5px solid #8b5d33;
+        }
+        
+        .timeline-card.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        
+        .timeline-card.egypt {
+            border-left-color: #d4af37;
+        }
+        
+        .timeline-card.greece {
+            border-left-color: #3d85c6;
+        }
+        
+        .timeline-card.rome {
+            border-left-color: #b43c3c;
+        }
+        
+        .civilization-filter {
+            transition: all 0.3s ease;
+        }
+        
+        .civilization-filter:hover {
+            transform: translateY(-3px);
+        }
+        
+        .civilization-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+        }
+        
+        .egypt-icon {
+            background-color: #f9e8a0;
+            color: #8a6e00;
+        }
+        
+        .greece-icon {
+            background-color: #d6e9ff;
+            color: #1a5fb4;
+        }
+        
+        .rome-icon {
+            background-color: #ffd6d6;
+            color: #8a1a1a;
+        }
+        
+        .zoom-controls button {
+            transition: all 0.2s ease;
+        }
+        
+        .zoom-controls button:hover {
+            background-color: #e2d5c3;
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 140px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+        
+        .event-image svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-card {
+                width: 280px;
+            }
+            
+            .timeline-container {
+                overflow-x: auto;
+            }
+            
+            .event-image {
+                height: 120px;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-32{margin-bottom:8rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-1{margin-right:0.25rem}.flex{display:flex}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-\[400px\]{height:400px}.w-5{width:1.25rem}.w-6{width:1.5rem}.min-w-\[1000px\]{min-width:1000px}.max-w-6xl{max-width:72rem}.cursor-pointer{cursor:pointer}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.rounded{border-radius:0.25rem}.rounded-lg{border-radius:0.5rem}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-100{--tw-bg-opacity:1;background-color:rgb(254 249 195 / var(--tw-bg-opacity, 1))}.bg-yellow-50{--tw-bg-opacity:1;background-color:rgb(254 252 232 / var(--tw-bg-opacity, 1))}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-yellow-800{--tw-text-opacity:1;color:rgb(133 77 14 / var(--tw-text-opacity, 1))}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}</style></head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-amber-900 mb-3">Ancient Civilizations Timeline</h1>
+            <p class="text-lg text-amber-800">Explore key events from 3000 BCE to 500 CE</p>
+        </header>
+        
+        <div class="filters mb-8">
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="civilization-filter cursor-pointer active" data-civ="all">
+                    <div class="civilization-icon bg-amber-100 text-amber-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020 5.5v-.565M8 3.935l-6 1.5V5.5A2.5 2.5 0 003.5 8H4m16-4.065l6 1.5V5.5A2.5 2.5 0 0020.5 8H20m0 0H4m16 0h0"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center text-sm font-semibold">All</div>
+                </div>
+                <div class="civilization-filter cursor-pointer" data-civ="egypt">
+                    <div class="civilization-icon egypt-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center text-sm font-semibold">Egyptian</div>
+                </div>
+                <div class="civilization-filter cursor-pointer" data-civ="greece">
+                    <div class="civilization-icon greece-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center text-sm font-semibold">Greek</div>
+                </div>
+                <div class="civilization-filter cursor-pointer" data-civ="rome">
+                    <div class="civilization-icon rome-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center text-sm font-semibold">Roman</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="zoom-controls flex justify-center gap-4 mb-6">
+            <button id="zoom-out" class="bg-amber-50 hover:bg-amber-100 text-amber-800 px-4 py-2 rounded-lg shadow flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                Zoom Out
+            </button>
+            <button id="zoom-in" class="bg-amber-50 hover:bg-amber-100 text-amber-800 px-4 py-2 rounded-lg shadow flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                </svg>
+                Zoom In
+            </button>
+            <button id="reset-zoom" class="bg-amber-50 hover:bg-amber-100 text-amber-800 px-4 py-2 rounded-lg shadow flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
+                </svg>
+                Reset
+            </button>
+        </div>
+        
+        <div class="timeline-wrapper relative mb-32">
+            <div class="timeline-container h-[400px] min-w-[1000px]" id="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Egyptian Events -->
+                <div class="timeline-marker egypt" data-id="egypt1" style="left: 10%;" data-civ="egypt"></div>
+                <div class="timeline-date" style="left: 10%;">3100 BCE</div>
+                <div class="timeline-card egypt" id="egypt1" style="top: 120px; left: 10%; transform: translateX(-50%);">
+                    <div class="event-image bg-yellow-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Egyptian crown -->
+                            <path d="M200,30 L170,80 L230,80 Z" fill="#d4af37"></path>
+                            <path d="M170,80 L160,120 L240,120 L230,80 Z" fill="#d4af37"></path>
+                            <circle cx="200" cy="60" r="8" fill="#b22234"></circle>
+                            
+                            <!-- Two figures representing Upper and Lower Egypt -->
+                            <path d="M150,120 L150,170 L180,170 L180,120 Z" fill="#c19a6b"></path>
+                            <circle cx="165" cy="105" r="15" fill="#c19a6b"></circle>
+                            
+                            <path d="M220,120 L220,170 L250,170 L250,120 Z" fill="#8b5d33"></path>
+                            <circle cx="235" cy="105" r="15" fill="#8b5d33"></circle>
+                            
+                            <!-- Hands joining -->
+                            <path d="M180,140 C190,130 210,130 220,140" stroke="#000" stroke-width="3" fill="none"></path>
+                            
+                            <!-- Nile River -->
+                            <path d="M100,180 C150,160 250,200 300,170" stroke="#3d85c6" stroke-width="5" fill="none"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-amber-800">Unification of Egypt</h3>
+                    <p class="mb-3">King Menes (Narmer) unites Upper and Lower Egypt, founding the First Dynasty and beginning the Early Dynastic Period.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">Egyptian</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker egypt" data-id="egypt2" style="left: 20%;" data-civ="egypt"></div>
+                <div class="timeline-date" style="left: 20%;">2550 BCE</div>
+                <div class="timeline-card egypt" id="egypt2" style="top: 120px; left: 20%; transform: translateX(-50%);">
+                    <div class="event-image bg-yellow-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sky -->
+                            <rect x="0" y="0" width="400" height="200" fill="#f9e8a0"></rect>
+                            
+                            <!-- Desert -->
+                            <rect x="0" y="150" width="400" height="50" fill="#e6c770"></rect>
+                            
+                            <!-- Pyramids -->
+                            <polygon points="200,30 120,150 280,150" fill="#d4af37" stroke="#c19a6b" stroke-width="2"></polygon>
+                            <polygon points="100,60 50,150 150,150" fill="#d4af37" stroke="#c19a6b" stroke-width="2"></polygon>
+                            <polygon points="300,60 250,150 350,150" fill="#d4af37" stroke="#c19a6b" stroke-width="2"></polygon>
+                            
+                            <!-- Sun -->
+                            <circle cx="350" cy="50" r="30" fill="#ff9900"></circle>
+                            <circle cx="350" cy="50" r="24" fill="#ffcc00"></circle>
+                            
+                            <!-- People building -->
+                            <circle cx="160" cy="140" r="5" fill="#8b5d33"></circle>
+                            <line x1="160" y1="145" x2="160" y2="160" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="160" y1="150" x2="150" y2="155" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="160" y1="150" x2="170" y2="155" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="160" y1="160" x2="155" y2="170" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="160" y1="160" x2="165" y2="170" stroke="#8b5d33" stroke-width="2"></line>
+                            
+                            <circle cx="240" cy="140" r="5" fill="#8b5d33"></circle>
+                            <line x1="240" y1="145" x2="240" y2="160" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="240" y1="150" x2="230" y2="155" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="240" y1="150" x2="250" y2="155" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="240" y1="160" x2="235" y2="170" stroke="#8b5d33" stroke-width="2"></line>
+                            <line x1="240" y1="160" x2="245" y2="170" stroke="#8b5d33" stroke-width="2"></line>
+                            
+                            <!-- Stone block -->
+                            <rect x="190" y="155" width="20" height="10" fill="#c19a6b" stroke="#8b5d33" stroke-width="1"></rect>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-amber-800">Great Pyramid of Giza</h3>
+                    <p class="mb-3">Construction of the Great Pyramid of Giza for Pharaoh Khufu. It remains one of the Seven Wonders of the Ancient World.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">Egyptian</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker egypt" data-id="egypt3" style="left: 35%;" data-civ="egypt"></div>
+                <div class="timeline-date" style="left: 35%;">1332 BCE</div>
+                <div class="timeline-card egypt" id="egypt3" style="top: 120px; left: 35%; transform: translateX(-50%);">
+                    <div class="event-image bg-yellow-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#f9e8a0"></rect>
+                            
+                            <!-- Tutankhamun's mask -->
+                            <path d="M200,30 L170,60 L170,130 L230,130 L230,60 Z" fill="#d4af37"></path>
+                            <path d="M170,60 L150,80 L150,110 L170,130 Z" fill="#d4af37"></path>
+                            <path d="M230,60 L250,80 L250,110 L230,130 Z" fill="#d4af37"></path>
+                            
+                            <!-- Face details -->
+                            <path d="M185,70 L185,90 L195,90 L195,70 Z" fill="#3d85c6"></path>
+                            <path d="M205,70 L205,90 L215,90 L215,70 Z" fill="#3d85c6"></path>
+                            <path d="M190,100 L210,100 L200,115 Z" fill="#3d85c6"></path>
+                            
+                            <!-- Nemes headdress stripes -->
+                            <path d="M170,70 L180,70 L180,120 L170,120 Z" fill="#3d85c6"></path>
+                            <path d="M220,70 L230,70 L230,120 L220,120 Z" fill="#3d85c6"></path>
+                            
+                            <!-- Cobra and vulture -->
+                            <path d="M190,50 C190,40 200,40 200,50 L200,60 Z" fill="#b22234"></path>
+                            <path d="M210,50 C210,40 200,40 200,50 L200,60 Z" fill="#b22234"></path>
+                            
+                            <!-- Hieroglyphics background -->
+                            <rect x="120" y="140" width="160" height="40" fill="#c19a6b"></rect>
+                            
+                            <!-- Simple hieroglyphics -->
+                            <circle cx="140" cy="150" r="5" fill="#000"></circle>
+                            <rect x="160" y="145" width="10" height="10" fill="#000"></rect>
+                            <path d="M190,145 L180,155 L200,155 Z" fill="#000"></path>
+                            <line x1="210" y1="145" x2="210" y2="155" stroke="#000" stroke-width="2"></line>
+                            <line x1="205" y1="150" x2="215" y2="150" stroke="#000" stroke-width="2"></line>
+                            <rect x="230" y="145" width="5" height="10" fill="#000"></rect>
+                            <rect x="240" y="145" width="5" height="10" fill="#000"></rect>
+                            <rect x="250" y="145" width="5" height="10" fill="#000"></rect>
+                            
+                            <circle cx="140" cy="170" r="5" fill="#000"></circle>
+                            <path d="M160,165 L170,165 L165,175 Z" fill="#000"></path>
+                            <line x1="180" y1="165" x2="190" y2="175" stroke="#000" stroke-width="2"></line>
+                            <line x1="190" y1="165" x2="180" y2="175" stroke="#000" stroke-width="2"></line>
+                            <rect x="200" y="165" width="10" height="10" fill="#000"></rect>
+                            <circle cx="220" cy="170" r="5" fill="#000"></circle>
+                            <path d="M240,165 L230,175 L250,175 Z" fill="#000"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-amber-800">Tutankhamun's Reign</h3>
+                    <p class="mb-3">The boy king Tutankhamun ascends to the throne at age 9. His tomb, discovered in 1922, provided unprecedented insights into ancient Egyptian royal life.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">Egyptian</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <!-- Greek Events -->
+                <div class="timeline-marker greece" data-id="greece1" style="left: 45%;" data-civ="greece"></div>
+                <div class="timeline-date" style="left: 45%;">776 BCE</div>
+                <div class="timeline-card greece" id="greece1" style="top: 120px; left: 45%; transform: translateX(-50%);">
+                    <div class="event-image bg-blue-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sky background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#d6e9ff"></rect>
+                            
+                            <!-- Stadium -->
+                            <ellipse cx="200" cy="150" rx="180" ry="40" fill="#f5f5f5" stroke="#3d85c6" stroke-width="2"></ellipse>
+                            <ellipse cx="200" cy="150" rx="150" ry="30" fill="#e6e6e6" stroke="#3d85c6" stroke-width="1"></ellipse>
+                            
+                            <!-- Track -->
+                            <ellipse cx="200" cy="150" rx="120" ry="20" fill="#c19a6b"></ellipse>
+                            
+                            <!-- Olympic flame -->
+                            <path d="M200,50 C210,30 220,40 215,50 C225,40 230,50 220,60 C230,55 225,70 215,65 C220,75 200,80 200,65 C200,80 180,75 185,65 C175,70 170,55 180,60 C170,50 175,40 185,50 C180,40 190,30 200,50 Z" fill="#ff9900"></path>
+                            <path d="M200,60 C205,50 210,55 208,60 C213,55 215,60 210,65 C215,63 213,70 208,68 C210,73 200,75 200,68 C200,75 190,73 192,68 C187,70 185,63 190,65 C185,60 187,55 192,60 C190,55 195,50 200,60 Z" fill="#ffcc00"></path>
+                            
+                            <!-- Olympic rings -->
+                            <circle cx="160" cy="100" r="15" stroke="#3d85c6" stroke-width="3" fill="none"></circle>
+                            <circle cx="200" cy="100" r="15" stroke="#000000" stroke-width="3" fill="none"></circle>
+                            <circle cx="240" cy="100" r="15" stroke="#b22234" stroke-width="3" fill="none"></circle>
+                            <circle cx="180" cy="115" r="15" stroke="#ffcc00" stroke-width="3" fill="none"></circle>
+                            <circle cx="220" cy="115" r="15" stroke="#008000" stroke-width="3" fill="none"></circle>
+                            
+                            <!-- Athletes -->
+                            <circle cx="150" cy="150" r="5" fill="#f5f5f5"></circle>
+                            <line x1="150" y1="155" x2="150" y2="170" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="150" y1="160" x2="140" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="150" y1="160" x2="160" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="150" y1="170" x2="145" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="150" y1="170" x2="155" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                            
+                            <circle cx="180" cy="150" r="5" fill="#f5f5f5"></circle>
+                            <line x1="180" y1="155" x2="180" y2="170" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="180" y1="160" x2="170" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="180" y1="160" x2="190" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="180" y1="170" x2="175" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="180" y1="170" x2="185" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                            
+                            <circle cx="210" cy="150" r="5" fill="#f5f5f5"></circle>
+                            <line x1="210" y1="155" x2="210" y2="170" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="210" y1="160" x2="200" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="210" y1="160" x2="220" y2="165" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="210" y1="170" x2="205" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                            <line x1="210" y1="170" x2="215" y2="180" stroke="#f5f5f5" stroke-width="2"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">First Olympic Games</h3>
+                    <p class="mb-3">The first recorded Olympic Games are held in Olympia, Greece. They continued every four years for nearly 1200 years.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">Greek</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker greece" data-id="greece2" style="left: 55%;" data-civ="greece"></div>
+                <div class="timeline-date" style="left: 55%;">508 BCE</div>
+                <div class="timeline-card greece" id="greece2" style="top: 120px; left: 55%; transform: translateX(-50%);">
+                    <div class="event-image bg-blue-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#d6e9ff"></rect>
+                            
+                            <!-- Greek temple -->
+                            <rect x="100" y="80" width="200" height="20" fill="#f5f5f5"></rect>
+                            <rect x="110" y="100" width="180" height="60" fill="#f5f5f5"></rect>
+                            <rect x="90" y="70" width="220" height="10" fill="#f5f5f5"></rect>
+                            
+                            <!-- Columns -->
+                            <rect x="120" y="40" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="160" y="40" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="200" y="40" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="240" y="40" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="280" y="40" width="10" height="60" fill="#f5f5f5"></rect>
+                            
+                            <!-- Column bases -->
+                            <rect x="115" y="100" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="155" y="100" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="195" y="100" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="235" y="100" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="275" y="100" width="20" height="5" fill="#e6e6e6"></rect>
+                            
+                            <!-- Column tops -->
+                            <rect x="115" y="40" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="155" y="40" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="195" y="40" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="235" y="40" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="275" y="40" width="20" height="5" fill="#e6e6e6"></rect>
+                            
+                            <!-- Steps -->
+                            <rect x="80" y="160" width="240" height="10" fill="#e6e6e6"></rect>
+                            <rect x="90" y="150" width="220" height="10" fill="#e6e6e6"></rect>
+                            <rect x="100" y="140" width="200" height="10" fill="#e6e6e6"></rect>
+                            
+                            <!-- People in discussion -->
+                            <circle cx="150" cy="130" r="5" fill="#3d85c6"></circle>
+                            <line x1="150" y1="135" x2="150" y2="150" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="150" y1="140" x2="140" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="150" y1="140" x2="160" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            
+                            <circle cx="170" cy="130" r="5" fill="#3d85c6"></circle>
+                            <line x1="170" y1="135" x2="170" y2="150" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="170" y1="140" x2="160" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="170" y1="140" x2="180" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            
+                            <circle cx="190" cy="130" r="5" fill="#3d85c6"></circle>
+                            <line x1="190" y1="135" x2="190" y2="150" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="190" y1="140" x2="180" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="190" y1="140" x2="200" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            
+                            <circle cx="210" cy="130" r="5" fill="#3d85c6"></circle>
+                            <line x1="210" y1="135" x2="210" y2="150" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="210" y1="140" x2="200" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="210" y1="140" x2="220" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            
+                            <circle cx="230" cy="130" r="5" fill="#3d85c6"></circle>
+                            <line x1="230" y1="135" x2="230" y2="150" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="230" y1="140" x2="220" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="230" y1="140" x2="240" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            
+                            <!-- Voting urns -->
+                            <rect x="250" cy="130" width="10" height="15" fill="#3d85c6"></rect>
+                            <rect x="270" cy="130" width="10" height="15" fill="#b22234"></rect>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Athenian Democracy</h3>
+                    <p class="mb-3">Cleisthenes introduces democratic reforms in Athens, creating the world's first democratic system of government.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">Greek</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker greece" data-id="greece3" style="left: 65%;" data-civ="greece"></div>
+                <div class="timeline-date" style="left: 65%;">323 BCE</div>
+                <div class="timeline-card greece" id="greece3" style="top: 120px; left: 65%; transform: translateX(-50%);">
+                    <div class="event-image bg-blue-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#d6e9ff"></rect>
+                            
+                            <!-- Map outline representing Alexander's empire -->
+                            <path d="M50,100 C80,80 120,90 150,70 C180,60 220,50 250,60 C280,70 320,90 350,80 C350,110 340,130 320,140 C290,150 260,140 230,150 C200,160 170,150 140,160 C110,170 80,160 50,150 Z" fill="#e6e6e6" stroke="#3d85c6" stroke-width="2"></path>
+                            
+                            <!-- Greece -->
+                            <circle cx="100" cy="100" r="10" fill="#3d85c6"></circle>
+                            
+                            <!-- Persia -->
+                            <circle cx="200" cy="100" r="15" fill="#ffcc00"></circle>
+                            
+                            <!-- Egypt -->
+                            <circle cx="150" cy="130" r="12" fill="#d4af37"></circle>
+                            
+                            <!-- India -->
+                            <circle cx="300" cy="110" r="15" fill="#008000"></circle>
+                            
+                            <!-- Alexander portrait -->
+                            <circle cx="200" cy="50" r="25" fill="#f5f5f5" stroke="#3d85c6" stroke-width="2"></circle>
+                            
+                            <!-- Simple face -->
+                            <circle cx="190" cy="45" r="3" fill="#000"></circle>
+                            <circle cx="210" cy="45" r="3" fill="#000"></circle>
+                            <path d="M190,60 C195,65 205,65 210,60" stroke="#000" stroke-width="2" fill="none"></path>
+                            
+                            <!-- Hair -->
+                            <path d="M175,40 C180,20 220,20 225,40" stroke="#8b5d33" stroke-width="5" fill="none"></path>
+                            
+                            <!-- Battle lines -->
+                            <line x1="100" y1="100" x2="200" y2="100" stroke="#b22234" stroke-width="2"></line>
+                            <line x1="200" y1="100" x2="300" y2="110" stroke="#b22234" stroke-width="2"></line>
+                            <line x1="100" y1="100" x2="150" y2="130" stroke="#b22234" stroke-width="2"></line>
+                            
+                            <!-- Soldiers (simplified) -->
+                            <circle cx="120" cy="90" r="3" fill="#3d85c6"></circle>
+                            <circle cx="140" cy="95" r="3" fill="#3d85c6"></circle>
+                            <circle cx="170" cy="100" r="3" fill="#3d85c6"></circle>
+                            <circle cx="220" cy="105" r="3" fill="#3d85c6"></circle>
+                            <circle cx="250" cy="105" r="3" fill="#3d85c6"></circle>
+                            <circle cx="280" cy="110" r="3" fill="#3d85c6"></circle>
+                            <circle cx="130" cy="120" r="3" fill="#3d85c6"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Death of Alexander the Great</h3>
+                    <p class="mb-3">Alexander the Great dies in Babylon, having created one of history's largest empires stretching from Greece to India.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">Greek</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <!-- Roman Events -->
+                <div class="timeline-marker rome" data-id="rome1" style="left: 75%;" data-civ="rome"></div>
+                <div class="timeline-date" style="left: 75%;">753 BCE</div>
+                <div class="timeline-card rome" id="rome1" style="top: 120px; left: 75%; transform: translateX(-50%);">
+                    <div class="event-image bg-red-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#ffd6d6"></rect>
+                            
+                            <!-- Hills of Rome -->
+                            <path d="M0,150 C50,100 100,130 150,110 C200,90 250,120 300,100 C350,80 400,110 400,150 L400,200 L0,200 Z" fill="#c19a6b"></path>
+                            
+                            <!-- Tiber River -->
+                            <path d="M100,150 C150,140 200,160 250,150 C300,140 350,160 400,150 L400,200 L100,200 Z" fill="#3d85c6" opacity="0.6"></path>
+                            
+                            <!-- Simple huts -->
+                            <path d="M150,120 L130,150 L170,150 Z" fill="#8b5d33"></path>
+                            <rect x="135" y="150" width="30" height="20" fill="#8b5d33"></rect>
+                            
+                            <path d="M200,110 L180,140 L220,140 Z" fill="#8b5d33"></path>
+                            <rect x="185" y="140" width="30" height="20" fill="#8b5d33"></rect>
+                            
+                            <path d="M250,120 L230,150 L270,150 Z" fill="#8b5d33"></path>
+                            <rect x="235" y="150" width="30" height="20" fill="#8b5d33"></rect>
+                            
+                            <!-- Wolf with Romulus and Remus -->
+                            <ellipse cx="320" cy="160" rx="25" ry="15" fill="#666"></ellipse>
+                            <ellipse cx="340" cy="160" rx="5" ry="10" fill="#666"></ellipse>
+                            <circle cx="310" cy="150" r="8" fill="#666"></circle>
+                            <ellipse cx="310" cy="155" rx="3" ry="5" fill="#ffd6d6"></ellipse>
+                            
+                            <!-- Babies -->
+                            <circle cx="300" cy="165" r="5" fill="#f5f5f5"></circle>
+                            <circle cx="310" cy="170" r="5" fill="#f5f5f5"></circle>
+                            
+                            <!-- Sun -->
+                            <circle cx="50" cy="50" r="20" fill="#ffcc00"></circle>
+                            <line x1="50" y1="20" x2="50" y2="10" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="50" y1="80" x2="50" y2="90" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="20" y1="50" x2="10" y2="50" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="80" y1="50" x2="90" y2="50" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="30" y1="30" x2="20" y2="20" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="70" y1="30" x2="80" y2="20" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="30" y1="70" x2="20" y2="80" stroke="#ffcc00" stroke-width="2"></line>
+                            <line x1="70" y1="70" x2="80" y2="80" stroke="#ffcc00" stroke-width="2"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-red-800">Founding of Rome</h3>
+                    <p class="mb-3">According to legend, Romulus founds the city of Rome after killing his twin brother Remus.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-semibold">Roman</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker rome" data-id="rome2" style="left: 85%;" data-civ="rome"></div>
+                <div class="timeline-date" style="left: 85%;">44 BCE</div>
+                <div class="timeline-card rome" id="rome2" style="top: 120px; left: 85%; transform: translateX(-50%);">
+                    <div class="event-image bg-red-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#ffd6d6"></rect>
+                            
+                            <!-- Roman Senate steps -->
+                            <rect x="50" y="100" width="300" height="100" fill="#f5f5f5"></rect>
+                            <rect x="70" y="80" width="260" height="20" fill="#f5f5f5"></rect>
+                            <rect x="90" y="60" width="220" height="20" fill="#f5f5f5"></rect>
+                            
+                            <!-- Columns -->
+                            <rect x="100" y="20" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="150" y="20" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="200" y="20" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="250" y="20" width="10" height="60" fill="#f5f5f5"></rect>
+                            <rect x="300" y="20" width="10" height="60" fill="#f5f5f5"></rect>
+                            
+                            <!-- Column tops -->
+                            <rect x="95" y="20" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="145" y="20" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="195" y="20" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="245" y="20" width="20" height="5" fill="#e6e6e6"></rect>
+                            <rect x="295" y="20" width="20" height="5" fill="#e6e6e6"></rect>
+                            
+                            <!-- Caesar -->
+                            <circle cx="200" cy="120" r="10" fill="#b22234"></circle>
+                            <rect x="195" y="130" width="10" height="20" fill="#b22234"></rect>
+                            <line x1="195" y1="135" x2="185" y2="140" stroke="#b22234" stroke-width="2"></line>
+                            <line x1="205" y1="135" x2="215" y2="140" stroke="#b22234" stroke-width="2"></line>
+                            <line x1="195" y1="150" x2="190" y2="170" stroke="#b22234" stroke-width="2"></line>
+                            <line x1="205" y1="150" x2="210" y2="170" stroke="#b22234" stroke-width="2"></line>
+                            
+                            <!-- Senators with daggers -->
+                            <circle cx="170" cy="110" r="8" fill="#3d85c6"></circle>
+                            <rect x="166" y="118" width="8" height="15" fill="#3d85c6"></rect>
+                            <line x1="166" y1="123" x2="156" y2="128" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="174" y1="123" x2="180" y2="115" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="180" y1="115" x2="190" y2="120" stroke="#3d85c6" stroke-width="1"></line>
+                            
+                            <circle cx="230" cy="110" r="8" fill="#3d85c6"></circle>
+                            <rect x="226" y="118" width="8" height="15" fill="#3d85c6"></rect>
+                            <line x1="226" y1="123" x2="220" y2="115" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="234" y1="123" x2="244" y2="128" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="220" y1="115" x2="210" y2="120" stroke="#3d85c6" stroke-width="1"></line>
+                            
+                            <circle cx="180" cy="140" r="8" fill="#3d85c6"></circle>
+                            <rect x="176" y="148" width="8" height="15" fill="#3d85c6"></rect>
+                            <line x1="176" y1="153" x2="166" y2="158" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="184" y1="153" x2="190" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="190" y1="145" x2="195" y2="140" stroke="#3d85c6" stroke-width="1"></line>
+                            
+                            <circle cx="220" cy="140" r="8" fill="#3d85c6"></circle>
+                            <rect x="216" y="148" width="8" height="15" fill="#3d85c6"></rect>
+                            <line x1="216" y1="153" x2="210" y2="145" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="224" y1="153" x2="234" y2="158" stroke="#3d85c6" stroke-width="2"></line>
+                            <line x1="210" y1="145" x2="205" y2="140" stroke="#3d85c6" stroke-width="1"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-red-800">Assassination of Julius Caesar</h3>
+                    <p class="mb-3">Julius Caesar is assassinated by Roman senators, including his friend Brutus, leading to the end of the Roman Republic.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-semibold">Roman</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-marker rome" data-id="rome3" style="left: 95%;" data-civ="rome"></div>
+                <div class="timeline-date" style="left: 95%;">476 CE</div>
+                <div class="timeline-card rome" id="rome3" style="top: 120px; left: 95%; transform: translateX(-50%);">
+                    <div class="event-image bg-red-50">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="400" height="200" fill="#ffd6d6"></rect>
+                            
+                            <!-- Broken columns symbolizing fall -->
+                            <rect x="80" y="80" width="15" height="70" fill="#f5f5f5"></rect>
+                            <path d="M80,80 L95,80 L90,60 L85,60 Z" fill="#f5f5f5"></path>
+                            
+                            <rect x="120" y="100" width="15" height="50" fill="#f5f5f5"></rect>
+                            <path d="M120,100 L135,100 L130,80 L125,80 Z" fill="#f5f5f5"></path>
+                            
+                            <rect x="160" y="110" width="15" height="40" fill="#f5f5f5"></rect>
+                            <path d="M160,110 L175,110 L170,90 L165,90 Z" fill="#f5f5f5"></path>
+                            
+                            <path d="M200,150 L215,150 L210,70 L205,70 Z" fill="#f5f5f5"></path>
+                            <path d="M200,70 L215,70 L210,50 L205,50 Z" fill="#f5f5f5"></path>
+                            
+                            <!-- Fallen column pieces -->
+                            <rect x="240" y="140" width="40" height="15" fill="#f5f5f5" transform="rotate(30 240 140)"></rect>
+                            <rect x="270" y="120" width="30" height="15" fill="#f5f5f5" transform="rotate(-20 270 120)"></rect>
+                            <rect x="300" y="150" width="25" height="15" fill="#f5f5f5" transform="rotate(10 300 150)"></rect>
+                            
+                            <!-- Germanic warrior -->
+                            <circle cx="320" cy="80" r="10" fill="#8b5d33"></circle>
+                            <rect x="315" y="90" width="10" height="30" fill="#8b5d33"></rect>
+                            <line x1="315" y1="95" x2="300" y2="110" stroke="#8b5d33" stroke-width="3"></line>
+                            <line x1="325" y1="95" x2="340" y2="110" stroke="#8b5d33" stroke-width="3"></line>
+                            <line x1="315" y1="120" x2="310" y2="150" stroke="#8b5d33" stroke-width="3"></line>
+                            <line x1="325" y1="120" x2="330" y2="150" stroke="#8b5d33" stroke-width="3"></line>
+                            
+                            <!-- Helmet -->
+                            <path d="M310,70 C310,60 330,60 330,70 L325,80 L315,80 Z" fill="#666"></path>
+                            <line x1="320" y1="60" x2="320" y2="50" stroke="#666" stroke-width="2"></line>
+                            
+                            <!-- Sword -->
+                            <line x1="300" y1="110" x2="280" y2="90" stroke="#666" stroke-width="2"></line>
+                            <line x1="280" y1="90" x2="270" y2="100" stroke="#666" stroke-width="2"></line>
+                            
+                            <!-- Roman eagle standard fallen -->
+                            <rect x="100" y="160" width="5" height="30" fill="#8b5d33" transform="rotate(45 100 160)"></rect>
+                            <path d="M120,140 C130,130 140,130 150,140 L135,150 Z" fill="#d4af37" transform="rotate(45 120 140)"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-red-800">Fall of Western Roman Empire</h3>
+                    <p class="mb-3">The Western Roman Empire falls when Emperor Romulus Augustus is deposed by the Germanic king Odoacer.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-semibold">Roman</span>
+                        <button class="text-sm text-blue-600 hover:underline close-card">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-panel bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-amber-900">About This Timeline</h2>
+            <p class="mb-4">This interactive timeline showcases key events from three major ancient civilizations: Egyptian, Greek, and Roman. Click on any event marker to learn more about that historical moment.</p>
+            <p>Use the civilization filters above to focus on specific cultures, and the zoom controls to navigate the timeline more easily.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const markers = document.querySelectorAll('.timeline-marker');
+            const cards = document.querySelectorAll('.timeline-card');
+            const closeButtons = document.querySelectorAll('.close-card');
+            const filters = document.querySelectorAll('.civilization-filter');
+            const container = document.getElementById('timeline-container');
+            
+            let scale = 1;
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const resetZoomBtn = document.getElementById('reset-zoom');
+            
+            // Handle marker clicks
+            markers.forEach(marker => {
+                marker.addEventListener('click', function() {
+                    const cardId = this.getAttribute('data-id');
+                    const card = document.getElementById(cardId);
+                    
+                    // Close all cards first
+                    cards.forEach(c => c.classList.remove('active'));
+                    markers.forEach(m => m.classList.remove('active'));
+                    
+                    // Open the clicked card
+                    card.classList.add('active');
+                    this.classList.add('active');
+                });
+            });
+            
+            // Handle close buttons
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.timeline-card');
+                    card.classList.remove('active');
+                    
+                    // Find and deactivate the corresponding marker
+                    const cardId = card.id;
+                    const marker = document.querySelector(`.timeline-marker[data-id="${cardId}"]`);
+                    marker.classList.remove('active');
+                });
+            });
+            
+            // Handle civilization filters
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const civ = this.getAttribute('data-civ');
+                    
+                    // Update active filter
+                    filters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide markers based on filter
+                    if (civ === 'all') {
+                        markers.forEach(marker => {
+                            marker.style.display = 'block';
+                        });
+                    } else {
+                        markers.forEach(marker => {
+                            if (marker.getAttribute('data-civ') === civ) {
+                                marker.style.display = 'block';
+                            } else {
+                                marker.style.display = 'none';
+                                
+                                // Close card if its marker is hidden
+                                const cardId = marker.getAttribute('data-id');
+                                const card = document.getElementById(cardId);
+                                card.classList.remove('active');
+                                marker.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Zoom functionality
+            zoomInBtn.addEventListener('click', function() {
+                if (scale < 2) {
+                    scale += 0.2;
+                    updateZoom();
+                }
+            });
+            
+            zoomOutBtn.addEventListener('click', function() {
+                if (scale > 0.5) {
+                    scale -= 0.2;
+                    updateZoom();
+                }
+            });
+            
+            resetZoomBtn.addEventListener('click', function() {
+                scale = 1;
+                updateZoom();
+            });
+            
+            function updateZoom() {
+                container.style.transform = `scale(${scale})`;
+                container.style.transformOrigin = 'center top';
+                
+                // Adjust container height based on scale
+                const newHeight = 400 * scale;
+                container.style.height = `${newHeight}px`;
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'959765a4007ff8e6',t:'MTc1MTU1NjM0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+
+</body></html>
